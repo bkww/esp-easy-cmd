@@ -1,27 +1,30 @@
 {
   "id": "esp-easy-cmd",
+  "name": "ESP Easy CMD",
+  "description": "Configurable MQTT GPIO command publisher for ESP Easy devices.",
   "configSchema": {
     "type": "object",
     "additionalProperties": false,
     "properties": {
-      "brokerUrl": {
-        "type": "string",
-        "default": "mqtt://202.118.188.17:1883"
-      },
+      "brokerUrl": { "type": "string" },
+      "clientId": { "type": "string", "default": "openclaw-esp-easy-cmd" },
       "devices": {
         "type": "array",
-        "default": [],
         "items": {
           "type": "object",
+          "additionalProperties": false,
           "properties": {
             "id": { "type": "string" },
+            "name": { "type": "string" },
             "sysname": { "type": "string" },
             "cmdTopic": { "type": "string" },
-            "defaultPin": { "type": "number" }
+            "defaultPin": { "type": "integer", "minimum": 0, "maximum": 40 },
+            "invert": { "type": "boolean", "default": false }
           },
-          "required": ["id"]
+          "required": ["id", "name", "sysname", "cmdTopic", "defaultPin", "invert"]
         }
       }
-    }
+    },
+    "required": ["brokerUrl", "clientId", "devices"]
   }
 }

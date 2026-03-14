@@ -1,13 +1,9 @@
 {
   "name": "esp-easy-cmd",
   "version": "0.1.0",
-  "private": true,
+  "main": "index.ts",
   "type": "module",
-  "openclaw": {
-    "extensions": ["./index.ts"]
-  },
   "dependencies": {
-    "mqtt": "^5.5.0",
-    "@sinclair/typebox": "^0.34.0"
+    "mqtt": "^5.7.2"
   }
 }
